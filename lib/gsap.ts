@@ -3,7 +3,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 let isRegistered = false;
 
-/** Singleton GSAP + ScrollTrigger registration; ticker tuned for scroll-linked motion. */
+/**
+ * Returns the GSAP instance. First call runs one-time setup:
+ * ScrollTrigger registration + `gsap.ticker.lagSmoothing(0)` (no duplicate calls).
+ */
 export function getGSAP() {
   if (!isRegistered) {
     gsap.registerPlugin(ScrollTrigger);
