@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { useHeroAnimation } from "@/hooks/useHeroAnimation";
 
 const STATS = [
@@ -12,7 +12,7 @@ const STATS = [
 
 const HEADLINE_LINES = ["WELCOME", "ITZFIZZ"] as const;
 
-function HeadlineLetters({ text }: { text: string }) {
+const HeadlineLetters = memo(function HeadlineLetters({ text }: { text: string }) {
   return (
     <>
       {text.split("").map((char, index) => (
@@ -26,9 +26,9 @@ function HeadlineLetters({ text }: { text: string }) {
       ))}
     </>
   );
-}
+});
 
-export function Hero() {
+function HeroInner() {
   const rootRef = useRef<HTMLElement>(null);
   useHeroAnimation(rootRef);
 
@@ -61,7 +61,7 @@ export function Hero() {
             className="relative flex aspect-square w-full max-w-md items-center justify-center will-change-transform"
             aria-hidden
           >
-            <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/20 will-change-transform" />
+            <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/20" />
 
             <div className="relative h-14 w-14 rounded-full bg-white/88 shadow-[0_0_28px_rgba(255,255,255,0.22),0_0_72px_rgba(255,255,255,0.1),0_0_120px_rgba(255,255,255,0.05)] md:h-16 md:w-16" />
           </div>
@@ -89,3 +89,5 @@ export function Hero() {
     </section>
   );
 }
+
+export const Hero = memo(HeroInner);
