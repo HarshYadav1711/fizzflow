@@ -2,12 +2,20 @@
 
 import { memo, useRef } from "react";
 import { useHeroAnimation } from "@/hooks/useHeroAnimation";
+import { useHeroVisualMouseParallax } from "@/hooks/useHeroVisualMouseParallax";
 import { HeadlineLetters } from "./HeadlineLetters";
 import { HERO_HEADLINE_LINES, HERO_STATS } from "./hero.constants";
 
 function HeroRoot() {
   const rootRef = useRef<HTMLElement>(null);
+  const visualOuterRef = useRef<HTMLDivElement>(null);
+  const visualParallaxRef = useRef<HTMLDivElement>(null);
   useHeroAnimation(rootRef);
+  useHeroVisualMouseParallax({
+    sectionRef: rootRef,
+    outerVisualRef: visualOuterRef,
+    innerParallaxRef: visualParallaxRef
+  });
 
   return (
     <section
@@ -47,13 +55,19 @@ function HeroRoot() {
           />
 
           <div
+            ref={visualOuterRef}
             data-hero-visual
             className="relative z-10 flex aspect-square w-full max-w-[min(100%,22rem)] items-center justify-center backface-hidden will-change-transform sm:max-w-md"
             aria-hidden
           >
-            <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/[0.14]" />
+            <div
+              ref={visualParallaxRef}
+              className="relative flex h-full w-full items-center justify-center will-change-transform"
+            >
+              <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/[0.14]" />
 
-            <div className="relative h-14 w-14 rounded-full bg-white shadow-[0_0_28px_rgba(255,255,255,0.2),0_0_72px_rgba(255,255,255,0.08),0_0_120px_rgba(255,255,255,0.04)] md:h-16 md:w-16" />
+              <div className="relative h-14 w-14 rounded-full bg-white shadow-[0_0_28px_rgba(255,255,255,0.2),0_0_72px_rgba(255,255,255,0.08),0_0_120px_rgba(255,255,255,0.04)] md:h-16 md:w-16" />
+            </div>
           </div>
         </div>
 
