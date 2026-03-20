@@ -35,7 +35,7 @@ export function Hero() {
   return (
     <section
       ref={rootRef}
-      className="flex min-h-dvh flex-col px-6 py-12 md:px-12 md:py-16"
+      className="flex min-h-[220vh] flex-col px-6 py-12 md:px-12 md:py-16"
       aria-labelledby="hero-heading"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col">
@@ -57,7 +57,8 @@ export function Hero() {
 
         <div className="flex min-h-0 flex-1 flex-col items-center justify-center py-16 md:py-20">
           <div
-            className="relative flex aspect-square w-full max-w-md items-center justify-center"
+            data-hero-visual
+            className="relative flex aspect-square w-full max-w-md items-center justify-center will-change-transform"
             aria-hidden
           >
             <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/20 will-change-transform" />
