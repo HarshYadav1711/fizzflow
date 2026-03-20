@@ -1,10 +1,10 @@
 "use client";
 
 import { memo, useRef } from "react";
-import { useScrollHeroMotion } from "@/hooks/useScrollHeroMotion";
 import { useHeroVisualMouseParallax } from "@/hooks/useHeroVisualMouseParallax";
-import { HeadlineLetters } from "./HeadlineLetters";
+import { useScrollHeroMotion } from "@/hooks/useScrollHeroMotion";
 import { HERO_HEADLINE_LINES, HERO_STATS } from "./hero.constants";
+import { HeadlineLetters } from "./HeadlineLetters";
 
 function HeroRoot() {
   const rootRef = useRef<HTMLElement>(null);

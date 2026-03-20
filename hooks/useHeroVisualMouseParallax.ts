@@ -6,6 +6,11 @@ import { getGSAP } from "@/lib/gsap";
 /** Max nudge in px — kept tiny so motion stays “almost invisible”. */
 const MAX_PARALLAX_PX = 5;
 
+/** Clamps to [-1, 1] for normalized pointer offset. */
+function clampSigned(n: number) {
+  return Math.max(-1, Math.min(1, n));
+}
+
 type ParallaxRefs = {
   sectionRef: RefObject<HTMLElement | null>;
   outerVisualRef: RefObject<HTMLElement | null>;
@@ -47,8 +52,8 @@ export function useHeroVisualMouseParallax({
         const cx = r.left + r.width / 2;
         const cy = r.top + r.height / 2;
         const denom = Math.max(r.width, r.height) * 0.42 + 48;
-        const nx = Math.max(-1, Math.min(1, (e.clientX - cx) / denom));
-        const ny = Math.max(-1, Math.min(1, (e.clientY - cy) / denom));
+        const nx = clampSigned((e.clientX - cx) / denom);
+        const ny = clampSigned((e.clientY - cy) / denom);
         xTo(nx * MAX_PARALLAX_PX);
         yTo(ny * MAX_PARALLAX_PX);
       });

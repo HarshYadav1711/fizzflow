@@ -4,7 +4,7 @@ A minimal, scroll-driven hero experience built for the Itzfizz Digital internshi
 
 Fizzflow turns scroll into motion: a letter-spaced headline, staggered intro animation, and a smooth scroll-linked visual system designed to feel premium, fast, and intentional.
 
-## Live Demo
+## Live demo
 
 [View Live Project](https://your-live-demo-link-here)
 
@@ -17,6 +17,7 @@ Fizzflow turns scroll into motion: a letter-spaced headline, staggered intro ani
 This project was built with one goal in mind: create a polished hero section that feels like a real product experience, not a template.
 
 The implementation focuses on:
+
 - strong visual hierarchy
 - smooth intro motion
 - scroll-linked interaction
@@ -33,7 +34,7 @@ The implementation focuses on:
 - Responsive layout with a premium dark aesthetic
 - Original visual direction, not a copy of the reference demo
 
-## Tech Stack
+## Tech stack
 
 - Next.js
 - React
@@ -53,9 +54,9 @@ The motion system is intentionally simple and controlled:
 
 This keeps the experience smooth, deterministic, and lightweight.
 
-## Folder Structure
+## Folder structure
 
-```bash
+```text
 app/
   layout.tsx
   page.tsx
@@ -68,36 +69,43 @@ components/
     hero.constants.ts
 
 hooks/
+  useHeroVisualMouseParallax.ts
   useScrollHeroMotion.ts
 
 lib/
   gsap.ts
+```
 
-## Getting Started
+## Getting started
 
--> Install dependencies
-npm install
+1. **Install dependencies**
 
--> Run the development server
-npm run dev
+   ```bash
+   npm install
+   ```
 
--> Build for production
-npm run build
+2. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production**
+
+   ```bash
+   npm run build
+   ```
 
 ## Notes
 
-No paid APIs are used
-
-No external billing is required
-
-The project is intentionally scoped to the assignment brief
-
-The design is original and focused on motion quality rather than visual overload
+- No paid APIs are used
+- No external billing is required
+- The project is intentionally scoped to the assignment brief
+- The design is original and focused on motion quality rather than visual overload
 
 ## Deployment
 
 Recommended deployment:
 
-Vercel for the live demo
-
-GitHub for source control and review
+- **Vercel** for the live demo
+- **GitHub** for source control and review
