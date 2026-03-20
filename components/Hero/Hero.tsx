@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useRef } from "react";
-import { useHeroAnimation } from "@/hooks/useHeroAnimation";
+import { useScrollHeroMotion } from "@/hooks/useScrollHeroMotion";
 import { useHeroVisualMouseParallax } from "@/hooks/useHeroVisualMouseParallax";
 import { HeadlineLetters } from "./HeadlineLetters";
 import { HERO_HEADLINE_LINES, HERO_STATS } from "./hero.constants";
@@ -10,7 +10,7 @@ function HeroRoot() {
   const rootRef = useRef<HTMLElement>(null);
   const visualOuterRef = useRef<HTMLDivElement>(null);
   const visualParallaxRef = useRef<HTMLDivElement>(null);
-  useHeroAnimation(rootRef);
+  useScrollHeroMotion(rootRef);
   useHeroVisualMouseParallax({
     sectionRef: rootRef,
     outerVisualRef: visualOuterRef,

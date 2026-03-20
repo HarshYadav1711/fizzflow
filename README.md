@@ -68,7 +68,7 @@ components/
     hero.constants.ts
 
 hooks/
-  useHeroAnimation.ts
+  useScrollHeroMotion.ts
 
 lib/
   gsap.ts

@@ -8,7 +8,7 @@ import { getGSAP } from "@/lib/gsap";
  * Intro: willChange hints during tween, cleared onComplete to avoid stale layers.
  * Scroll: transform-only scrub (y / scale / rotate); force3D for GPU layer (translateZ path).
  */
-export function useHeroAnimation(rootRef: RefObject<HTMLElement | null>) {
+export function useScrollHeroMotion(rootRef: RefObject<HTMLElement | null>) {
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
