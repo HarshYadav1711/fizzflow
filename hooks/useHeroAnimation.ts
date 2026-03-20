@@ -6,7 +6,7 @@ import { getGSAP } from "@/lib/gsap";
 /**
  * Hero intro (timeline) + scroll-scrubbed visual (ScrollTrigger).
  * Intro: willChange hints during tween, cleared onComplete to avoid stale layers.
- * Scroll: transform-only scrub (subtle y / scale / rotate); force3D + willChange on visual.
+ * Scroll: transform-only scrub (y / scale / rotate); force3D for GPU layer (translateZ path).
  */
 export function useHeroAnimation(rootRef: RefObject<HTMLElement | null>) {
   useLayoutEffect(() => {
@@ -64,11 +64,9 @@ export function useHeroAnimation(rootRef: RefObject<HTMLElement | null>) {
       }
 
       if (visual) {
-        gsap.set(visual, { willChange: "transform" });
-
         gsap.fromTo(
           visual,
-          { y: 0, scale: 1, rotation: 0 },
+          { y: 0, scale: 1, rotation: 0, force3D: true },
           {
             y: -90,
             scale: 1.05,

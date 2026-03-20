@@ -48,7 +48,7 @@ function HeroRoot() {
 
           <div
             data-hero-visual
-            className="relative z-10 flex aspect-square w-full max-w-[min(100%,22rem)] items-center justify-center will-change-transform sm:max-w-md"
+            className="relative z-10 flex aspect-square w-full max-w-[min(100%,22rem)] items-center justify-center backface-hidden will-change-transform sm:max-w-md"
             aria-hidden
           >
             <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/[0.14]" />
