@@ -5,5 +5,18 @@ node_modules
 .next/
 out/
 
-# Env
+# Local env / secrets (never commit)
 .env*.local
+
+# Vercel
+.vercel
+
+# Debug / OS
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+*.pem
+
+# TypeScript
+*.tsbuildinfo

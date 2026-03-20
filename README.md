@@ -105,7 +105,32 @@ lib/
 
 ## Deployment
 
-Recommended deployment:
+### Production build (local)
 
-- **Vercel** for the live demo
-- **GitHub** for source control and review
+```bash
+npm run build
+npm run start
+```
+
+`npm run build` must complete with no errors before deploy. The app is statically prerendered where possible (see build output).
+
+### Vercel (recommended)
+
+This is a standard **Next.js** App Router project—no custom server or environment variables are required for the default hero.
+
+1. Push the repo to **GitHub** (or GitLab / Bitbucket).
+2. Go to [vercel.com](https://vercel.com) and **Import** the repository.
+3. **Framework preset:** Next.js (auto-detected).
+4. **Build command:** `npm run build` (default).
+5. **Output:** Next.js default (no static `out/` export unless you change config).
+6. **Install command:** `npm install` (default).
+7. Deploy. Vercel runs production install + build on each push to the connected branch.
+
+Optional: set **Root directory** if the app lives in a subfolder (not needed for this repo).
+
+**Do not commit** build artifacts: `.next/`, `node_modules/`, or `.env*.local` (see `.gitignore`). If `.next` was ever committed, remove it from git history and rely on CI to build fresh.
+
+### Source control
+
+- **GitHub** (or similar) for source control and review
+- **Vercel** for the live demo URL (update the [Live demo](#live-demo) link after the first deploy)
