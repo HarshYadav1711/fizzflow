@@ -35,19 +35,25 @@ function HeroInner() {
   return (
     <section
       ref={rootRef}
-      className="flex min-h-[220vh] flex-col px-6 py-12 md:px-12 md:py-16"
+      className="relative flex min-h-[220vh] flex-col overflow-hidden px-4 py-14 sm:px-8 md:px-12 md:py-20 lg:px-16"
       aria-labelledby="hero-heading"
     >
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col">
-        <header className="shrink-0">
+      {/* Minimal ambient gradient — single soft highlight + faint cool tint */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-5%,rgba(255,255,255,0.07),transparent_58%),linear-gradient(115deg,rgba(120,140,255,0.04)_0%,transparent_42%,rgba(255,255,255,0.02)_100%)]"
+        aria-hidden
+      />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col">
+        <header className="shrink-0 pt-1">
           <h1
             id="hero-heading"
-            className="text-4xl font-medium uppercase leading-none tracking-[0.2em] text-white md:text-6xl md:tracking-[0.24em]"
+            className="max-w-[18ch] text-[clamp(2.25rem,6vw,3.75rem)] font-medium uppercase leading-[1.05] tracking-[0.22em] text-white md:tracking-[0.26em]"
           >
             {HEADLINE_LINES.map((line, lineIndex) => (
               <span
                 key={line}
-                className={lineIndex === 0 ? "block" : "mt-2 block md:mt-3"}
+                className={lineIndex === 0 ? "block" : "mt-3 block md:mt-4"}
               >
                 <HeadlineLetters text={line} />
               </span>
@@ -55,30 +61,30 @@ function HeroInner() {
           </h1>
         </header>
 
-        <div className="flex min-h-0 flex-1 flex-col items-center justify-center py-16 md:py-20">
+        <div className="flex min-h-0 flex-1 flex-col items-center justify-center py-12 md:py-16 lg:py-20">
           <div
             data-hero-visual
-            className="relative flex aspect-square w-full max-w-md items-center justify-center will-change-transform"
+            className="relative flex aspect-square w-full max-w-[min(100%,22rem)] items-center justify-center will-change-transform sm:max-w-md"
             aria-hidden
           >
-            <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/20" />
+            <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/[0.14]" />
 
-            <div className="relative h-14 w-14 rounded-full bg-white/88 shadow-[0_0_28px_rgba(255,255,255,0.22),0_0_72px_rgba(255,255,255,0.1),0_0_120px_rgba(255,255,255,0.05)] md:h-16 md:w-16" />
+            <div className="relative h-14 w-14 rounded-full bg-white shadow-[0_0_28px_rgba(255,255,255,0.2),0_0_72px_rgba(255,255,255,0.08),0_0_120px_rgba(255,255,255,0.04)] md:h-16 md:w-16" />
           </div>
         </div>
 
-        <footer className="shrink-0 border-t border-white/10 pt-10 md:pt-12">
-          <ul className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4 md:gap-x-12">
+        <footer className="shrink-0 border-t border-white/[0.08] pt-10 md:pt-14">
+          <ul className="grid grid-cols-2 gap-x-10 gap-y-12 sm:gap-x-12 md:grid-cols-4 md:gap-x-14">
             {STATS.map((item) => (
               <li
                 key={item.label}
-                className="flex flex-col gap-1"
+                className="flex max-w-[12rem] flex-col gap-2"
                 data-hero-stat
               >
-                <p className="text-2xl font-medium tabular-nums tracking-tight text-white md:text-3xl">
+                <p className="text-[1.65rem] font-medium tabular-nums tracking-tight text-white md:text-[1.85rem]">
                   {item.value}
                 </p>
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/55">
+                <p className="text-[0.65rem] font-medium uppercase leading-snug tracking-[0.2em] text-white/50">
                   {item.label}
                 </p>
               </li>
