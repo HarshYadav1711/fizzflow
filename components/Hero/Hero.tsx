@@ -2,33 +2,10 @@
 
 import { memo, useRef } from "react";
 import { useHeroAnimation } from "@/hooks/useHeroAnimation";
+import { HeadlineLetters } from "./HeadlineLetters";
+import { HERO_HEADLINE_LINES, HERO_STATS } from "./hero.constants";
 
-const STATS = [
-  { value: "48%", label: "Year over year" },
-  { value: "2.4k", label: "Active users" },
-  { value: "99%", label: "Uptime" },
-  { value: "24/7", label: "Support" }
-] as const;
-
-const HEADLINE_LINES = ["WELCOME", "ITZFIZZ"] as const;
-
-const HeadlineLetters = memo(function HeadlineLetters({ text }: { text: string }) {
-  return (
-    <>
-      {text.split("").map((char, index) => (
-        <span
-          key={`${text}-${index}`}
-          className="inline-block"
-          data-hero-letter
-        >
-          {char}
-        </span>
-      ))}
-    </>
-  );
-});
-
-function HeroInner() {
+function HeroRoot() {
   const rootRef = useRef<HTMLElement>(null);
   useHeroAnimation(rootRef);
 
@@ -38,7 +15,6 @@ function HeroInner() {
       className="relative flex min-h-[220vh] flex-col overflow-hidden px-4 py-14 sm:px-8 md:px-12 md:py-20 lg:px-16"
       aria-labelledby="hero-heading"
     >
-      {/* Minimal ambient gradient — single soft highlight + faint cool tint */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-5%,rgba(255,255,255,0.07),transparent_58%),linear-gradient(115deg,rgba(120,140,255,0.04)_0%,transparent_42%,rgba(255,255,255,0.02)_100%)]"
         aria-hidden
@@ -50,7 +26,7 @@ function HeroInner() {
             id="hero-heading"
             className="max-w-[18ch] text-[clamp(2.25rem,6vw,3.75rem)] font-medium uppercase leading-[1.05] tracking-[0.22em] text-white md:tracking-[0.26em]"
           >
-            {HEADLINE_LINES.map((line, lineIndex) => (
+            {HERO_HEADLINE_LINES.map((line, lineIndex) => (
               <span
                 key={line}
                 className={lineIndex === 0 ? "block" : "mt-3 block md:mt-4"}
@@ -75,7 +51,7 @@ function HeroInner() {
 
         <footer className="shrink-0 border-t border-white/[0.08] pt-10 md:pt-14">
           <ul className="grid grid-cols-2 gap-x-10 gap-y-12 sm:gap-x-12 md:grid-cols-4 md:gap-x-14">
-            {STATS.map((item) => (
+            {HERO_STATS.map((item) => (
               <li
                 key={item.label}
                 className="flex max-w-[12rem] flex-col gap-2"
@@ -96,4 +72,4 @@ function HeroInner() {
   );
 }
 
-export const Hero = memo(HeroInner);
+export const Hero = memo(HeroRoot);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, type RefObject } from "react";
-import { getGsap } from "@/lib/gsap";
+import { getGSAP } from "@/lib/gsap";
 
 /**
  * Hero intro (timeline) + scroll-scrubbed visual (ScrollTrigger).
@@ -13,7 +13,7 @@ export function useHeroAnimation(rootRef: RefObject<HTMLElement | null>) {
     const root = rootRef.current;
     if (!root) return;
 
-    const gsap = getGsap();
+    const gsap = getGSAP();
 
     const ctx = gsap.context(() => {
       const letters = root.querySelectorAll<HTMLElement>("[data-hero-letter]");
