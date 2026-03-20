@@ -12,13 +12,15 @@ function HeroRoot() {
   return (
     <section
       ref={rootRef}
-      className="relative flex min-h-[220vh] flex-col overflow-hidden px-4 py-14 sm:px-8 md:px-12 md:py-20 lg:px-16"
+      className="relative flex min-h-[220vh] flex-col overflow-hidden bg-[#0B0B0F] px-4 py-14 sm:px-8 md:px-12 md:py-20 lg:px-16"
       aria-labelledby="hero-heading"
     >
+      {/* Whisper top fade — stays on #0B0B0F base; no accent hues */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-5%,rgba(255,255,255,0.07),transparent_58%),linear-gradient(115deg,rgba(120,140,255,0.04)_0%,transparent_42%,rgba(255,255,255,0.02)_100%)]"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.025] via-transparent to-transparent"
         aria-hidden
       />
+      <div className="hero-noise" aria-hidden />
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col">
         <header className="shrink-0 pt-1">
@@ -37,10 +39,16 @@ function HeroRoot() {
           </h1>
         </header>
 
-        <div className="flex min-h-0 flex-1 flex-col items-center justify-center py-12 md:py-16 lg:py-20">
+        <div className="relative flex min-h-0 flex-1 flex-col items-center justify-center py-12 md:py-16 lg:py-20">
+          {/* Radial depth: centered on the orb region (this flex cell) */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_78%_72%_at_50%_50%,rgba(255,255,255,0.028)_0%,rgba(22,22,30,0.42)_40%,rgba(11,11,15,0)_72%)]"
+            aria-hidden
+          />
+
           <div
             data-hero-visual
-            className="relative flex aspect-square w-full max-w-[min(100%,22rem)] items-center justify-center will-change-transform sm:max-w-md"
+            className="relative z-10 flex aspect-square w-full max-w-[min(100%,22rem)] items-center justify-center will-change-transform sm:max-w-md"
             aria-hidden
           >
             <div className="pointer-events-none absolute inset-[11%] rotate-[22deg] rounded-full border border-white/[0.14]" />
